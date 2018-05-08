@@ -29,45 +29,36 @@ public class PortfolioController {
     private PortfolioService portfolioService;
 
     @GetMapping("/get")
-    public @ResponseBody ResponseEntity<List<Portfolio>> all() {
-        
+    public @ResponseBody ResponseEntity<List<Portfolio>> get() {
+        System.out.println("GET ALL CALLED");
+        portfolioService.getAll();
+        System.out.println("portfolioService.getAll()"+portfolioService.getAll());
         return new ResponseEntity<>(portfolioService.getAll(), HttpStatus.OK);
     }
 
+  
     @PostMapping("/post")
     public ResponseEntity<?> post(@RequestBody Portfolio portfolio,UriComponentsBuilder ucBuilder) {
-        
-        
         portfolioService.save(portfolio);
-        
         HttpHeaders headers = new HttpHeaders();
-        // headers.setLocation(ucBuilder.path("/get/{portfolioid}").buildAndExpand(portfolio.getaId()).toUri());
+        headers.setLocation(ucBuilder.path("/get/{pid}").buildAndExpand(portfolio.getCat()).toUri());
+        return new ResponseEntity<>( portfolioService.save(portfolio),headers, HttpStatus.CREATED);
+
+    }
+   
+
+    // @PutMapping("/put/{portfolioidId}")
+    // public ResponseEntity<?> put(@PathVariable Long portfolioidId, @RequestBody Portfolio portfolio ) {
+
+    //     portfolioService.save(portfolio);
        
-        return new ResponseEntity<>(headers,HttpStatus.CREATED);
+    //     return new ResponseEntity<>(portfolio,HttpStatus.OK);
+    // }
 
-    }
-
-    @GetMapping("/get/{portfolioid}")
-    public @ResponseBody ResponseEntity<?> getById(@PathVariable Long portfolioId,UriComponentsBuilder ucBuilder) {
-        Portfolio portfolio = portfolioService.find(portfolioId);
-
-        
-        return new ResponseEntity<>(portfolio, HttpStatus.OK);
-
-    }
-
-    @PutMapping("/put/{portfolioidId}")
-    public ResponseEntity<?> put(@PathVariable Long portfolioidId, @RequestBody Portfolio portfolio ) {
-
-        portfolioService.save(portfolio);
-       
-        return new ResponseEntity<>(portfolio,HttpStatus.OK);
-    }
-
-    @DeleteMapping("/delete/{portfolioidId}")
-    public ResponseEntity<?> delete(@PathVariable Long userid) {
-
-        portfolioService.delete(userid);
+    @DeleteMapping("/delete/{pId}")
+    public ResponseEntity<?> delete(@PathVariable Long pId) {
+System.out.println("Delete Id"+pId);
+        // portfolioService.delete(pId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

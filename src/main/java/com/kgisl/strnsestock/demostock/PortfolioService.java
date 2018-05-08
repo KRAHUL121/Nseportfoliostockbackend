@@ -10,10 +10,10 @@ public interface PortfolioService {
 
     public Portfolio save(Portfolio portfolio);
 
-    public Portfolio find(long id);
+    // public Portfolio find(long id);
 
-    public void delete(Long id);
+    // public void delete(String cat);
 
-    public List<Portfolio> listtop();
+    // public List<Portfolio> listtop();
 
 }

@@ -20,27 +20,27 @@ public class PortfolioServiceImp implements PortfolioService {
     }
 
     @Override
-    public Portfolio save(Portfolio event) {
+    public Portfolio save(Portfolio p) {
         
  
 
-        return portfolioRepository.saveAndFlush(event);
+        return portfolioRepository.saveAndFlush(p);
 
     }
 
-    @Override
-    public Portfolio find(long id) {
+    // @Override
+    // public Portfolio find(long id) {
        
-        return portfolioRepository.findOne(id);
-    }
+    //     return portfolioRepository.findOne(id);
+    // }
 
-    @Override
-    public void delete(Long id) {
+    // @Override
+    // public void delete(String cat) {
        
-        portfolioRepository.delete(id);
-    }
-    @Override
-    public List<Portfolio> listtop(){
-        return portfolioRepository.findAll().stream().limit(5).collect(Collectors.toList());
-    }
+    //     portfolioRepository.delete(cat);
+    // }
+    // @Override
+    // public List<Portfolio> listtop(){
+    //     return portfolioRepository.findAll().stream().limit(5).collect(Collectors.toList());
+    // }
 }

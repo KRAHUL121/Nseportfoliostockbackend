@@ -1,66 +1,78 @@
 package com.kgisl.strnsestock.demostock;
 
-import java.util.List;
+
 
 import javax.persistence.*;
 
-@Entity
-public class Portfolio {
 
+
+import java.util.List;
+@Entity
+public class Portfolio{
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long userid;
-
+	Long id;
 	@Column
-	private String cat;
-
+	String cat;
+	
 	@Column
-	private String symbol;
+	String index;
+  @Column
+	 String symbol;
+	 
 
-@Column
-private Nsestock nsestock;
 
-	// @ManyToOne(cascade = CascadeType.ALL)
-	// @JoinColumn(name = "portfolioidId", updatable = false, insertable = true)
-	
 
-	public Portfolio() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
-	
-
-	public Long getaId() {
-		return userid;
-	}
-
-	public void setaId(Long userid) {
-		this.userid = userid;
-	}
-
-	public String getCat() {
-		return cat;
-	}
-
-	public void setCat(String cat) {
-		this.cat = cat;
-	}
-
+/**
+ * @return the id
+ */
+public Long getId() {
+	return id;
+}
+/**
+ * @param id the id to set
+ */
+public void setId(Long id) {
+	this.id = id;
+}
 	public String getSymbol() {
 		return symbol;
-	}
-
-	public void setSymbol(String symbol) {
+	  }
+	 
+	  public void setSymbol(String symbol) {
 		this.symbol = symbol;
-	}
+	  }	
+	 
+public String getCat() {
+return cat;
+}
 
-	public Nsestock getNsestock() {
-		return nsestock;
-	}
+ public void setCat(String cat) {
+   this.cat = cat;
+ }
 
-	
-	public void setNsestock(Nsestock nsestock) {
-		this.nsestock = nsestock;
-	}
+/**
+ * @return the index
+ */
+public String getIndex() {
+	return index;
+}
+/**
+ * @param index the index to set
+ */
+public void setIndex(String index) {
+	this.index = index;
+}
+//  public List<Portfolio> getPortfolio() {
+// 	return portfolio;
+// }
+// public void setPortfolio(List<Portfolio> portfolio) {
+// 	this.portfolio = portfolio;
+// }
+
+public Portfolio() {
+	super();}
+
 	}
